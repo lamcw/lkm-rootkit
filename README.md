@@ -46,4 +46,4 @@ localhost:/vagrant$ make
 ```
 
 You can then load the modules with `sudo insmod module.ko` and unload with
-`sudo rmmod module.ko`.
+`sudo rmmod module`.
