@@ -6,13 +6,13 @@ MODULE_LICENSE("GPL");
 
 static int __init dummy_init(void)
 {
-	printk("Hi\n");
+	printk(KERN_INFO "Hi\n");
 	return 0;
 }
 
 static void __exit dummy_exit(void)
 {
-	printk("Bye\n");
+	printk(KERN_INFO "Bye\n");
 }
 
 module_init(dummy_init);
