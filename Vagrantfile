@@ -71,6 +71,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     apk update
+    apk upgrade
     apk add alpine-sdk linux-virt-dev
   SHELL
 end
